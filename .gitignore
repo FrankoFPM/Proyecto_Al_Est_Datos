@@ -1,0 +1,16 @@
+build/classes/.netbeans_automatic_build
+build/classes/.netbeans_update_resources
+build/classes/Assets/login.png
+build/classes/Assets/nanoda.jpeg
+build/classes/Assets/Recurso 1.png
+build/classes/Assets/Recurso 1@0.5x.png
+build/classes/Controller/LoginController.class
+build/classes/Main/Main.class
+build/classes/Styles/Jpanelmage.class
+build/classes/Styles/PanelRound.class
+build/classes/View/UI_Login.class
+build/classes/View/UI_Login.form
+build/classes/View/UI_Login$1.class
+nbproject/private/config.properties
+nbproject/private/private.properties
+nbproject/private/private.xml
