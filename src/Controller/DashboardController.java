@@ -5,7 +5,11 @@
 package Controller;
 
 import View.UI_Dashboard;
+import View.UI_Home;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JPanel;
 
 /**
  *
@@ -14,6 +18,7 @@ import java.awt.Color;
 public class DashboardController {
     
     public static UI_Dashboard vista;
+    UI_Home home = null;
 
     public DashboardController(UI_Dashboard dash) {
         this.vista = dash;
@@ -25,6 +30,18 @@ public class DashboardController {
         vista.getRootPane().putClientProperty("JRootPane.titleBarBackground", new Color(23, 180, 252));
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
+        home = new UI_Home();
+        ChangePanel(home);
+    }
+    
+    public void ChangePanel(JPanel box) {
+        box.setPreferredSize(new Dimension(1000, 500)); // Tamaño inicial
+
+        vista.jpInternal.removeAll();
+        vista.jpInternal.setLayout(new BorderLayout());
+        vista.jpInternal.add(box, BorderLayout.CENTER);
+        vista.jpInternal.revalidate();
+        vista.jpInternal.repaint();
     }
     
 }
