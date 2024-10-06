@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import View.UI_Dashboard;
 import View.UI_Login;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
@@ -17,6 +18,7 @@ import java.awt.event.ActionListener;
 public class LoginController implements ActionListener {
 
     UI_Login login;
+    UI_Dashboard dashboard = new UI_Dashboard();
 
     public LoginController(UI_Login login) {
         this.login = login;
@@ -43,7 +45,8 @@ public class LoginController implements ActionListener {
         if (e.getSource() == login.btnAccess) {
             login.txtAccess.putClientProperty("JComponent.outline", "error");
             login.txtEmail.putClientProperty("JComponent.outline", "error");
-
+            DashboardController controllerDash = new DashboardController(dashboard);
+            login.dispose();
         }
     }
 
