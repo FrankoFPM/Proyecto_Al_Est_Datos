@@ -36,7 +36,7 @@ public class LoginController implements ActionListener {
     void initialize() {
         login.setLocationRelativeTo(null);
         login.getRootPane().putClientProperty("JRootPane.titleBarForeground", Color.WHITE);
-        login.getRootPane().putClientProperty("JRootPane.titleBarBackground", new Color(23, 180, 252));
+        login.getRootPane().putClientProperty("JRootPane.titleBarBackground", new Color(153, 0, 51));
         login.setVisible(true);
     }
 
