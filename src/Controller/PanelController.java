@@ -13,7 +13,7 @@ public abstract class PanelController {
     public PanelController(JPanel panel, UI_Dashboard app) {
         this.panel = panel;
         this.app = app;
-        showWindow(panel);
+        //showWindow(panel);
     }
 
     void showWindow(JPanel panel) {

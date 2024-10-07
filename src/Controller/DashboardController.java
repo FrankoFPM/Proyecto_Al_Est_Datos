@@ -60,6 +60,8 @@ public class DashboardController implements ActionListener {
         }
         if (e.getSource() == vista.btnCaategoria) {
             UI_Categorias cat = new UI_Categorias();
+            cat.txtName.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de la categoria");
+            cat.datePick.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de la categoria");
             ChangePanel(cat);
             resetButtons();
             vista.btnCaategoria.setSelected(true);

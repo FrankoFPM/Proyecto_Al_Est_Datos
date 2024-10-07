@@ -18,6 +18,7 @@ public class CategoriaController extends PanelController{
     public CategoriaController(UI_Categorias cat, UI_Dashboard dash) {
         super(cat, dash);
         this.categoriaui = cat;
+        
     }
     
     
