@@ -6,7 +6,9 @@ package Controller;
 
 import View.UI_Categorias;
 import View.UI_Dashboard;
+import View.UI_Departamentos;
 import View.UI_Home;
+import View.UI_Personal;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -27,7 +29,8 @@ public class DashboardController implements ActionListener {
         this.vista = dash;
         vista.btnCaategoria.addActionListener(this);
         vista.btnDashboard.addActionListener(this);
-
+        vista.btnDepartamento.addActionListener(this);
+        vista.btnPersonal.addActionListener(this);
         launchApp();
     }
 
@@ -66,6 +69,19 @@ public class DashboardController implements ActionListener {
             resetButtons();
             vista.btnCaategoria.setSelected(true);
         }
+        if(e.getSource()==vista.btnDepartamento){
+            UI_Departamentos cate = new UI_Departamentos();
+            ChangePanel(cate);
+            resetButtons();
+            vista.btnDepartamento.setSelected(true);
+        }
+        if(e.getSource()==vista.btnPersonal){
+            UI_Personal perso= new UI_Personal();
+            ChangePanel(perso);
+            resetButtons();
+            vista.btnPersonal.setSelected(true);
+        }
+        
     }
 
     private void resetButtons() {
