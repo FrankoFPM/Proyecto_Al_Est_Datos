@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 
 public class Informe implements Serializable {
 
-    private int ID;
+    //private int ID;
     private String accionesTomadas;
     private Date fechaRes;
     private String estado;
@@ -28,13 +28,13 @@ public class Informe implements Serializable {
         this.fechaRes = fechaRes;
     }
 
-    public int getID() {
+    /*public int getID() {
         return ID;
     }
 
     public void setID(int ID) {
         this.ID = ID;
-    }
+    }*/
 
     
     

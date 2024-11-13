@@ -17,7 +17,6 @@ public class InformeController extends PanelController implements ActionListener
     ListaEnlazada Lista;
 
     public InformeController(UI_Informe info, UI_Dashboard dash) {
-
         super(info, dash);
         this.info = info;
         super.showWindow(info);
@@ -47,7 +46,7 @@ public class InformeController extends PanelController implements ActionListener
 
     @Override
     protected void reloadWindow() {
-
+        // Empty method as per current code structure
     }
 
     @Override
@@ -66,69 +65,76 @@ public class InformeController extends PanelController implements ActionListener
             // Crear el nuevo informe
             est = ProcessInforme.LeerInforme(info);
 
-            if (est != null) {  // Verificar que el informe se creó correctamente
-                // Crear el nodo y agregarlo a la lista
+            if (est != null) { 
+                int i = Lista.getCtotal() + 1;
                 Nodo nuevo = new Nodo(est);
-                Lista.AgregarAlFinal(nuevo);
+                est.RegistroInforme(i); 
+
+                Lista.AgregarAlFinal(nuevo);  // Agregar el nodo a la lista
 
                 // Actualizar la interfaz
                 ActualizarFrame();
-
                 JOptionPane.showMessageDialog(null, "Informe registrado exitosamente");
             }
+
         }
         if (e.getSource() == info.btnConsultar) {
-            // Pedir al usuario el ID del informe que desea buscar
-            String idBuscado = JOptionPane.showInputDialog("Ingrese el ID del informe a buscar:");
+            // Pedir al usuario el número 'i' del informe que desea buscar
+            String idBuscado = JOptionPane.showInputDialog("Ingrese el número de informe a buscar:");
 
-            // Buscar el nodo que contiene el informe con el ID especificado
-            actual = Lista.BuscarPorID(idBuscado);
+            try {
+                int i = Integer.parseInt(idBuscado);  
+                actual = Lista.BuscarPorID(i); // Buscar el informe por su ID
 
-            if (actual == null) {
-                // Mostrar mensaje si el ID no existe en la lista
-                JOptionPane.showMessageDialog(null, "El ID del informe no existe en la lista", "ID no encontrado", JOptionPane.ERROR_MESSAGE);
-            } else {
-                // Mostrar la información del informe en la interfaz
-                info.atxtDescripcion.setText(actual.inf.getDescripcion());
+                if (actual == null) {
+                    // Si no se encuentra el informe, mostrar un mensaje
+                    JOptionPane.showMessageDialog(null, "El número de informe no existe en la lista", "Informe no encontrado", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // Mostrar la información del informe en la interfaz
+                    info.atxtDescripcion.setText(actual.inf.getDescripcion());
 
-                // Configurar el campo de acciones tomadas según el valor del informe
-                switch (actual.inf.getAccionesTomadas()) {
-                    case "Actualización de Hardware":
-                        info.cbxAccionesTomadas.setSelectedIndex(1);
-                        break;
-                    case "Actualización de Software":
-                        info.cbxAccionesTomadas.setSelectedIndex(2);
-                        break;
-                    case "Reinicio de Sistema":
-                        info.cbxAccionesTomadas.setSelectedIndex(3);
-                        break;
-                    case "Corrección de Configuración":
-                        info.cbxAccionesTomadas.setSelectedIndex(4);
-                        break;
-                    case "Establecimiento de Red":
-                        info.cbxAccionesTomadas.setSelectedIndex(5);
-                        break;
-                    case "Optimización de Rendimiento":
-                        info.cbxAccionesTomadas.setSelectedIndex(6);
-                        break;
-                    default:
-                        info.cbxAccionesTomadas.setSelectedIndex(0);  // Selección por defecto
+                    // Configurar el campo de acciones tomadas según el valor del informe
+                    switch (actual.inf.getAccionesTomadas()) {
+                        case "Actualización de Hardware":
+                            info.cbxAccionesTomadas.setSelectedIndex(1);
+                            break;
+                        case "Actualización de Software":
+                            info.cbxAccionesTomadas.setSelectedIndex(2);
+                            break;
+                        case "Reinicio de Sistema":
+                            info.cbxAccionesTomadas.setSelectedIndex(3);
+                            break;
+                        case "Corrección de Configuración":
+                            info.cbxAccionesTomadas.setSelectedIndex(4);
+                            break;
+                        case "Establecimiento de Red":
+                            info.cbxAccionesTomadas.setSelectedIndex(5);
+                            break;
+                        case "Optimización de Rendimiento":
+                            info.cbxAccionesTomadas.setSelectedIndex(6);
+                            break;
+                        default:
+                            info.cbxAccionesTomadas.setSelectedIndex(0);  // Selección por defecto
+                    }
+
+                    // Configurar el campo de estado según el valor del informe
+                    switch (actual.inf.getEstado()) {
+                        case "EN PROCESO":
+                            info.cbxEstado.setSelectedIndex(1);
+                            break;
+                        case "ATENDIDO":
+                            info.cbxEstado.setSelectedIndex(2);
+                            break;
+                        case "DERIVADO":
+                            info.cbxEstado.setSelectedIndex(3);
+                            break;
+                        default:
+                            info.cbxEstado.setSelectedIndex(0);  // Selección por defecto
+                    }
                 }
-
-                // Configurar el campo de estado según el valor del informe
-                switch (actual.inf.getEstado()) {
-                    case "EN PROCESO":
-                        info.cbxEstado.setSelectedIndex(1);
-                        break;
-                    case "ATENDIDO":
-                        info.cbxEstado.setSelectedIndex(2);
-                        break;
-                    case "DERIVADO":
-                        info.cbxEstado.setSelectedIndex(3);
-                        break;
-                    default:
-                        info.cbxEstado.setSelectedIndex(0);  // Selección por defecto
-                }
+            } catch (NumberFormatException ex) {
+                // Si el número no es válido, mostrar un mensaje de error
+                JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido para el informe", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -162,5 +168,4 @@ public class InformeController extends PanelController implements ActionListener
             }
         }
     }
-
 }
