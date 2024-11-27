@@ -14,7 +14,7 @@ Este proyecto tiene como objetivo desarrollar un aplicativo para la gestión efi
 | RF5 | El aplicativo permite el registro de áreas y realizar el mantenimiento correspondiente                   | 🔄         | Lista enlazada doble                         |
 | RF6 | El aplicativo permite el registro de una incidencia informática y realizar el mantenimiento correspondiente | 🔄         | Lista enlazada simple                        |
 | RF7 | El aplicativo permite asignar a un personal para la solución de la incidencia informática                 | ⏳         | No definido                         |
-| RF8 | El aplicativo permite al empleado registrar los detalles de la solución y observaciones de la incidencia solucionada | ⏳         | No definido                         |
+| RF8 | El aplicativo permite al empleado registrar los detalles de la solución y observaciones de la incidencia solucionada | 🔄         | Colas                         |
 | RF9 | El aplicativo permite realizar el seguimiento de la incidencia visualizando su estado: En proceso, Atendido, Derivado | ⏳         | No definido                         |
 | RF10| El aplicativo permite visualizar la lista de incidencias por rango de fechas                             | ⏳         | No definido                         |
 
